@@ -29,6 +29,30 @@ int linearTime(int n) {
 	return steps; // O(n)
 }
 
+int sieveOfEratosthenes(int n) {
+	vector<bool> isPrime(n + 1, true);
+	if (n >= 0) {
+		isPrime[0] = false;
+	}
+	if (n >= 1) {
+		isPrime[1] = false;
+	}
+
+	for (int prime = 2; prime <= n / prime; prime++) {
+		if (isPrime[prime]) {
+			for (int multiple = prime * prime; multiple <= n; multiple += prime) {
+				isPrime[multiple] = false;
+			}
+		}
+	}
+
+	int primeCount = 0;
+	for (bool prime : isPrime) {
+		primeCount += prime;
+	}
+	return primeCount; // O(n log log n)
+}
+
 int linearithmicTime(int n) {
 	int steps = 0;
 	for (int i = 0; i < n; i++) {
@@ -96,6 +120,7 @@ int main() {
 	cout << "O(log n): " << logarithmicTime(n) << '\n';
 	cout << "O(sqrt n): " << squareRootTime(n) << '\n';
 	cout << "O(n): " << linearTime(n) << '\n';
+	cout << "O(n log log n), prime count: " << sieveOfEratosthenes(n) << '\n';
 	cout << "O(n log n): " << linearithmicTime(n) << '\n';
 	cout << "O(n^2): " << quadraticTime(n) << '\n';
 	cout << "O(n^3): " << cubicTime(n) << '\n';

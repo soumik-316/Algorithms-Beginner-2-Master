@@ -10,6 +10,7 @@ size `n` increases. We usually describe the growth with Big O notation.
 | `O(log n)` | Logarithmic | Binary search |
 | `O(sqrt n)` | Square root | Checking divisors up to `sqrt(n)` |
 | `O(n)` | Linear | Scanning an array |
+| `O(n log log n)` | Near-linear | Sieve of Eratosthenes |
 | `O(n log n)` | Linearithmic | Merge sort |
 | `O(n^2)` | Quadratic | Comparing every pair of elements |
 | `O(n^3)` | Cubic | Three nested loops |
@@ -25,6 +26,7 @@ is written as `O(n)`.
 
 - Statements that do not depend on `n` are `O(1)`.
 - One loop over the input is usually `O(n)`.
+- The Sieve of Eratosthenes marks multiples of each prime in `O(n log log n)`.
 - Repeatedly dividing the input by two is `O(log n)`.
 - Nested loops multiply their complexities.
 - Consecutive blocks add their complexities, and the largest term dominates.
